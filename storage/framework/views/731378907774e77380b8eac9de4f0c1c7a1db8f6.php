@@ -1,0 +1,107 @@
+<?php $__env->startSection('title','Admin Panel'); ?>
+
+<?php $__env->startSection('content'); ?>
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1>Kategori Ekle</h1>
+                    </div>
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="#">Anasayfa</a></li>
+                            <li class="breadcrumb-item active">Kategori</li>
+                        </ol>
+                    </div>
+                </div>
+            </div><!-- /.container-fluid -->
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+
+            <!-- Default box -->
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Title</h3>
+
+                    <div class="card-tools">
+                        <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                            <i class="fas fa-minus"></i>
+                        </button>
+                        <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="col-md-12">
+                        <!-- general form elements -->
+                        <div class="card card-primary">
+
+                            <!-- /.card-header -->
+                            <!-- form start -->
+                            <form action="<?php echo e(route('admin_category_create')); ?>" method="post">
+                                <?php echo csrf_field(); ?>
+                                <div class="card-body">
+                                    <div class="form-group">
+                                        <label>Kategori</label>
+                                        <select class="form-control select2" name="parent_id" style="width: 100%;">
+                                            <option value="0" selected="selected">Ana Kategori</option>
+                                            <?php $__currentLoopData = $datalist; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $ct): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                <option value="<?php echo e($ct->id); ?>"><?php echo e($ct->title); ?></option>
+                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Başlık</label>
+                                        <input type="text" name="title" class="form-control">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Anahtar Kelimeler</label>
+                                        <input type="text" name="keywords" class="form-control">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Açıklama</label>
+                                        <input type="text" name="description" class="form-control">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Url</label>
+                                        <input type="text" name="description" class="form-control">
+                                    </div>
+                                    <!-- /.form-group -->
+                                    <div class="form-group">
+                                        <label>Durum</label>
+                                        <select class="form-control select2" name="status" style="width: 100%;">
+                                            <option selected="selected">False</option>
+                                            <option>True</option>
+                                        </select>
+                                    </div>
+                                    <!-- /.form-group -->
+                                </div>
+                                <!-- /.card-body -->
+
+                                <div class="card-footer">
+                                    <button type="submit" class="btn btn-primary">Ekle</button>
+                                </div>
+                            </form>
+                        </div>
+                        <!-- /.card -->
+
+                </div>
+                <!-- /.card-body -->
+
+            </div>
+            <!-- /.card -->
+
+        </section>
+        <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.admin', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /Users/demir/Desktop/LaravelProject/eticaret2/resources/views/admin/category_add.blade.php ENDPATH**/ ?>
